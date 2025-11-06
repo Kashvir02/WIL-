@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Landscaping Course - Empowering the Nation</title>
+
+  <!-- fonts (match other pages) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Blinker:wght@600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind = {};
+    tailwind.config = { theme: { extend: { colors: { primary: '#0b5a2e', accent:'#D36112' } } } };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="js/main.js" defer></script>
+
+  <style>
+    :root{
+      --page-bg: #E4C5B0;
+      --nav-bg: #D36112;
+      --card-bg: #83C186;
+      --btn-bg: #589B92;
+      --btn-text: #ffffff;
+      --text-color: #000000;
+     --card-text: #072014;
+    }
+
+    /* page layout consistent with Index.html */
+    body { background: var(--page-bg); color: var(--text-color); font-family: 'Blinker', sans-serif; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
+    header { background: var(--nav-bg); color: #fff; position:fixed; left:0; right:0; top:0; z-index:50; }
+    header a, header strong { color: #fff; text-decoration:none; }
+    main { max-width:64rem; margin:5.5rem auto 2rem; padding:1rem; }
+    .lead-muted { color: #6b7280; }
+    img.responsive { width:100%; border-radius:10px; display:block; }
+
+    /* keep the main content area the same as the page background (beige) */
+    .card { background: var(--page-bg) !important; color: var(--text-color) !important; }
+    
+    /* optional small green accent box if needed (use class="accent") */
+    .accent { background: var(--card-bg); color: var(--card-text); border-radius:8px; padding:0.75rem; }
+  </style>
+</head>
+<body>
+  <header class="p-4">
+    <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+      <a href="index.html" style="display:flex;align-items:center;gap:12px;color:inherit;">
+        <img src="wilLogo.jpg" alt="Empowering the Nation" style="height:40px;border-radius:6px;" onerror="this.onerror=null;this.src='https://placehold.co/64x64/4D603A/E08E40?text=EN'">
+        <strong>Empowering the Nation</strong>
+      </a>
+
+      <nav style="display:flex;align-items:center;gap:12px;">
+        <a href="contacts.html" style="color:#fff;">Contact</a>
+        <a href="fees.html" style="background:var(--btn-bg);color:var(--btn-text);padding:8px 12px;border-radius:9999px;text-decoration:none;font-weight:700;">Calculate Fees</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="card">
+    <a href="index.html" class="lead-muted font-semibold mb-4 inline-block" style="display:inline-block;margin-bottom:1rem;">← Back to Courses</a>
+
+    <h2 style="font-family:'Baloo 2',cursive;font-size:2rem;margin-bottom:0.75rem;color:var(--text-color);">Landscaping</h2>
+    <p class="lead-muted" style="margin:0 0 1rem 0;">Learn how to plan, design and maintain outdoor environments. This course supports sustainable and attractive green spaces.</p>
+
+    <section style="margin-bottom:1rem;">
+      <h3 style="font-size:1.125rem;font-weight:700;margin-bottom:0.5rem;color:var(--text-color);">Modules (StudyBox, 2025)</h3>
+      <ul class="list-disc ml-6">
+        <li>Introduction to Landscape Design</li>
+        <li>Soil and Plant Management</li>
+        <li>Garden Layouts and Irrigation Systems</li>
+        <li>Maintenance and Sustainability</li>
+      </ul>
+    </section>
+
+    <section style="margin-bottom:1rem;">
+      <h3 style="font-size:1.025rem;font-weight:700;margin-bottom:0.5rem;color:var(--text-color);">Career Opportunities</h3>
+      <ul class="list-disc ml-6">
+        <li>Landscape designer</li>
+        <li>Gardener</li>
+        <li>Groundskeeper</li>
+        <li>Nursery assistant</li>
+        <li>Environmental maintenance worker</li>
+      </ul>
+
+      <figure style="margin-top:1rem;">
+        <img class="responsive" src="https://i.pinimg.com/736x/cb/6a/fc/cb6afc6ed3421115bc523cbfbf951a3b.jpg" alt="Landscaping">
+      </figure>
+    </section>
+
+    <section style="margin-top:1rem;">
+      <div style="border-left:4px solid var(--nav-bg); padding:1rem; border-radius:8px; background: rgba(255,255,255,0.04);">
+        <h3 style="margin:0 0 0.5rem 0;font-size:1.125rem;font-weight:700;color:var(--text-color);">Conclusion</h3>
+        <p style="margin:0;">Landscaping combines creativity and practical skills to improve public and private spaces while promoting sustainability.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer style="text-align:center;padding:1rem;background:#111827;color:#fff;margin-top:2rem;">
+    &copy; <span id="year"></span> Empowering the Nation. All rights reserved.
+  </footer>
+
+  <script>try{document.getElementById('year').textContent=new Date().getFullYear();}catch(e){}</script>
+</body>
+</html>

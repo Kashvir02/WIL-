@@ -1,100 +1,384 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="EMPOWERING NATION - Skill development courses for all ages" />
-  <meta name="keywords" content="courses, training, skills, green academy, education" />
-  <meta name="author" content="Your Team Name" />
-  <title>GreenLeaf Academy</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script defer src="script.js"></script>
-</head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Empowering the Nation - Course Catalog</title>
 
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Blinker:wght@600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind = {};
+    tailwind.config = { theme: { extend: { colors: { primary: '#0b5a2e', secondary: '#E08E40' } } } };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root{
+      --page-bg: #E4C5B0;
+      --nav-bg: #D36112;
+      --card-bg: #83C186;
+      --btn-bg: #589B92;
+      --btn-text: #ffffff;
+      --text-color: #000000;
+    }
+
+    /* keep sizes unchanged -- only colors / fonts adjusted */
+    body {
+      background: var(--page-bg);
+      color: var(--text-color);
+      font-family: 'Blinker', sans-serif;
+      font-weight: 600;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    h1,h2,h3, .card h3 {
+      font-family: 'Baloo 2', cursive;
+    }
+
+    main { padding-top: 4.5rem; }
+
+    /* header */
+    header {
+      background: var(--nav-bg);
+    }
+    header img { border-radius:6px; }
+    header h1 { color: #fff; }
+
+    /* navigation controls */
+    .btn-primary {
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      border: none;
+    }
+    .view-btn {
+      background: #ffffff;
+      color: #111827;
+      border-radius: 9999px;
+      padding: 8px 12px;
+    }
+
+    /* dropdown */
+    .dropdown { position: relative; display:inline-block; }
+    .dropdown-menu {
+      position: absolute;
+      right: 0;
+      top: calc(100% + 8px);
+      background: white;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 8px 24px rgba(0,0,0,.08);
+      border-radius: 8px;
+      min-width: 200px;
+      z-index:60;
+      display:none;
+    }
+    .dropdown-menu.show { display:block; }
+    .dropdown-menu a { display:block; padding:8px 12px; color:#111827; text-decoration:none; }
+    .dropdown-menu a:hover { background:#f3f4f6; }
+
+    /* quick nav */
+    #top-controls { display:flex; gap:12px; align-items:center; }
+    #search { min-width:200px; padding:8px 10px; border-radius:8px; border:1px solid #e5e7eb; }
+    #filter-buttons button { margin-right:8px; background:#fff; border:1px solid #e5e7eb; padding:6px 10px; border-radius:8px; }
+
+    /* cards */
+    .card {
+      transition: transform .18s ease, box-shadow .18s ease;
+      cursor: pointer;
+      background: var(--card-bg);
+      color: var(--text-color);
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 10px 24px rgba(0,0,0,0.08); }
+    .card img { width:100%; height:176px; object-fit:cover; display:block; background:transparent; }
+
+    /* breadcrumbs/toast/back to top */
+    #breadcrumb { font-size:14px; color:#374151; margin-bottom:12px; }
+    #toast { position: fixed; right: 18px; bottom: 18px; background:#111827; color:white; padding:12px 16px; border-radius:8px; box-shadow:0 8px 20px rgba(0,0,0,.15); z-index:80; display:none; }
+    #back-to-top { position:fixed; right:18px; bottom:80px; display:none; background:var(--btn-bg); color:var(--btn-text); padding:10px 12px; border-radius:8px; z-index:90; box-shadow:0 8px 20px rgba(0,0,0,.12); }
+
+    @media (max-width:640px){ #search{ min-width:120px } }
+  </style>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="js/main.js" defer></script>
+</head>
 <body>
-  <!-- HEADER -->
-  <header>
-    <div class="logo">🌿 EMPOWERING NATION academy</div>
-    <nav>
-      <ul class="menu">
-        <li><a href="#home">Home</a></li>
-        <li class="dropdown">
-          <a href="#">Courses ▼</a>
-          <ul class="dropdown-content">
-            <li><a href="#sixMonth">6-Month Courses</a></li>
-            <li><a href="#sixWeek">6-Week Courses</a></li>
-          </ul>
-        </li>
-        <li><a href="#fees">Fees</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
+  <a class="sr-only" href="#main-content">Skip to content</a>
+
+  <header class="fixed top-0 left-0 right-0 z-50" role="banner">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-4">
+      <a href="Index.html" aria-label="Home" style="display:flex;align-items:center;gap:12px;">
+        <img src="wilLogo.jpg" alt="Empowering the Nation" class="h-12 w-auto"/>
+        <h1 class="text-xl font-bold" style="margin:0;">Empowering the Nation</h1>
+      </a>
+
+      <nav class="ml-auto flex items-center gap-3" role="navigation" aria-label="Primary">
+        <a href="contacts.html" class="inline-block px-3 py-1 rounded-md" style="color:#fff;text-decoration:none;border:1px solid rgba(255,255,255,.06)">Contact</a>
+        <a href="fees.html" class="inline-block px-3 py-1.5 rounded-full font-semibold btn-primary">Calculate Fees</a>
+
+        <div id="top-controls" class="flex items-center gap-3">
+          <div class="dropdown" id="courses-dropdown">
+            <button id="dropdown-toggle" class="view-btn" aria-haspopup="true" aria-expanded="false" aria-controls="dropdown-menu">View ▾</button>
+            <div class="dropdown-menu" id="dropdown-menu" role="menu" aria-hidden="true">
+              <a href="#" data-filter="all" role="menuitem">All Courses</a>
+              <a href="#" data-filter="6 Weeks" role="menuitem">6-Week Courses</a>
+              <a href="#" data-filter="6 Months" role="menuitem">6-Month Courses</a>
+              <a href="contacts.html" role="menuitem">Contact Us</a>
+              <a href="fees.html" role="menuitem">Fees Calculator</a>
+            </div>
+          </div>
+
+          <input id="search" type="search" placeholder="Search courses" aria-label="Search courses">
+        </div>
+      </nav>
+    </div>
   </header>
 
-  <!-- HOME -->
-  <section id="home" class="section">
-    <h1>Welcome to GreenLeaf Academy</h1>
-    <p>Empowering lives through skill development and lifelong learning.</p>
-  </section>
+  <main id="main-content" class="min-h-screen p-6 pt-28">
+    <div class="max-w-6xl mx-auto">
+      
 
-  <!-- 6-MONTH COURSES -->
-  <section id="sixMonth" class="section">
-    <h2>6-Month Courses</h2>
-    <div class="course-list">
-      <div class="course-card" data-course="lifeSkills">🌱 Life Skills</div>
-      <div class="course-card" data-course="landscaping">🌳 Landscaping</div>
-      <div class="course-card" data-course="cooking">🍳 Cooking</div>
+      <h2 class="text-3xl font-extrabold text-gray-900 mb-4">Course Catalog</h2>
+      <p class="text-gray-600 mb-6">Explore practical short courses and calculate fees.</p>
+
+      <div id="courses-grid" class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" aria-live="polite" aria-atomic="true">
+        <!-- Cards (keep structure; images optional) -->
+        <a class="card block rounded-xl overflow-hidden border hover:border-gray-200" href="gardenMaintenance.html" data-duration="6 Weeks" data-title="Garden Maintenance" data-summary="Practical skills for watering, pruning, planting and soil care.">
+          <img src="assets/garden.jpg" alt="Garden Maintenance" onerror="this.onerror=null;this.style.display='none'">
+          <div class="p-4">
+            <h3 class="font-bold text-lg">Garden Maintenance</h3>
+            <p class="text-sm text-gray-900 mt-2">6 Weeks — R750</p>
+            <p class="text-sm text-gray-900 mt-2">Practical skills for watering, pruning, planting and soil care to keep small gardens healthy and attractive.</p>
+          </div>
+        </a>
+
+        <a class="card block rounded-xl overflow-hidden border hover:border-gray-200" href="cooking.html" data-duration="6 Weeks" data-title="Cooking" data-summary="Learn nutritious meal planning and basic cooking techniques.">
+          <img src="assets/cooking.jpg" alt="Cooking" onerror="this.onerror=null;this.style.display='none'">
+          <div class="p-4">
+            <h3 class="font-bold text-lg">Cooking</h3>
+            <p class="text-sm text-gray-900 mt-2">6 Weeks — R750</p>
+            <p class="text-sm text-gray-900 mt-2">Learn nutritious meal planning, core cooking techniques and easy recipes for family meals or a small catering start-up.</p>
+          </div>
+        </a>
+
+        <a class="card block rounded-xl overflow-hidden border hover:border-gray-200" href="ChildMinding.html" data-duration="6 Weeks" data-title="Child Minding" data-summary="Basic childcare, safety and activities for infants and toddlers.">
+          <img src="assets/childminding.jpg" alt="Child Minding" onerror="this.onerror=null;this.style.display='none'">
+          <div class="p-4">
+            <h3 class="font-bold text-lg">Child Minding</h3>
+            <p class="text-sm text-gray-900 mt-2">6 Weeks — R750</p>
+            <p class="text-sm text-gray-900 mt-2">Covers basic childcare, safety, developmental activities and routines for infants and toddlers.</p>
+          </div>
+        </a>
+
+        <a class="card block rounded-xl overflow-hidden border hover:border-gray-200" href="FirstAid.html" data-duration="6 Months" data-title="First Aid" data-summary="Emergency response training including CPR and wound care.">
+          <img src="assets/firstaid.jpg" alt="First Aid" onerror="this.onerror=null;this.style.display='none'">
+          <div class="p-4">
+            <h3 class="font-bold text-lg">First Aid</h3>
+            <p class="text-sm text-gray-900 mt-2">6 Months — R1500</p>
+            <p class="text-sm text-gray-900 mt-2">Essential emergency response training including CPR, wound care and managing common medical incidents.</p>
+          </div>
+        </a>
+
+        <a class="card block rounded-xl overflow-hidden border hover:border-gray-200" href="Sewing.html" data-duration="6 Months" data-title="Sewing" data-summary="Hands-on training in machine use and basic garment making.">
+          <img src="assets/sewing.jpg" alt="Sewing" onerror="this.onerror=null;this.style.display='none'">
+          <div class="p-4">
+            <h3 class="font-bold text-lg">Sewing</h3>
+            <p class="text-sm text-gray-900 mt-2">6 Months — R1500</p>
+            <p class="text-sm text-gray-900 mt-2">Hands-on training in machine use, common stitches, repairs and creating simple garments.</p>
+          </div>
+        </a>
+
+        <a class="card block rounded-xl overflow-hidden border hover:border-gray-200" href="Landscaping.html" data-duration="6 Months" data-title="Landscaping" data-summary="Garden design, plant selection and outdoor features.">
+          <img src="assets/landscaping.jpg" alt="Landscaping" onerror="this.onerror=null;this.style.display='none'">
+          <div class="p-4">
+            <h3 class="font-bold text-lg">Landscaping</h3>
+            <p class="text-sm text-gray-900 mt-2">6 Months — R1500</p>
+            <p class="text-sm text-gray-900 mt-2">Introduces garden design, plant selection and building simple features for attractive outdoor spaces.</p>
+          </div>
+        </a>
+
+        <a class="card block rounded-xl overflow-hidden border hover:border-gray-200" href="lifeSkills.html" data-duration="6 Months" data-title="Life Skills" data-summary="Financial basics and workplace readiness.">
+          <img src="assets/lifeskills.jpg" alt="Life Skills" onerror="this.onerror=null;this.style.display='none'">
+          <div class="p-4">
+            <h3 class="font-bold text-lg">Life Skills</h3>
+            <p class="text-sm text-gray-900 mt-2">6 Months — R1500</p>
+            <p class="text-sm text-gray-900 mt-2">Focuses on financial basics, workplace readiness and personal development to improve everyday independence.</p>
+          </div>
+        </a>
+      </div>
     </div>
-  </section>
+  </main>
 
-  <!-- 6-WEEK COURSES -->
-  <section id="sixWeek" class="section">
-    <h2>6-Week Courses</h2>
-    <div class="course-list">
-      <div class="course-card" data-course="firstAid">⛑ First Aid</div>
-      <div class="course-card" data-course="sewing">🧵 Sewing</div>
-      <div class="course-card" data-course="childMinding">👶 Child Minding</div>
-      <div class="course-card" data-course="gardenMaintenance">🌼 Garden Maintenance</div>
+  <footer class="bg-gray-800 text-white text-center p-4 mt-12" role="contentinfo">
+    <div class="max-w-6xl mx-auto px-4">
+      <p style="margin:0;">
+        &copy; <span id="year"></span> Empowering the Nation.
+        <span style="margin-left:12px;">|</span>
+        <a href="contacts.html" style="color:#fff;margin-left:12px;text-decoration:underline;">Contact Us</a>
+      </p>
     </div>
-  </section>
-
-  <!-- COURSE SUMMARY -->
-  <section id="courseSummary" class="section hidden">
-    <h2 id="courseTitle"></h2>
-    <p id="courseDescription"></p>
-    <button class="back-btn" onclick="goBack()">← Back</button>
-  </section>
-
-  <!-- FEES -->
-  <section id="fees" class="section">
-    <h2>Calculate Fees</h2>
-    <form id="feeForm">
-      <label for="courseType">Choose Course Type:</label>
-      <select id="courseType" required>
-        <option value="">Select</option>
-        <option value="6month">6-Month Course</option>
-        <option value="6week">6-Week Course</option>
-      </select>
-
-      <label for="numCourses">Number of Courses:</label>
-      <input type="number" id="numCourses" min="1" required />
-
-      <button type="submit">Calculate</button>
-      <p id="totalFee"></p>
-    </form>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" class="section">
-    <h2>Contact Us</h2>
-    <p>Email: info@greenleafacademy.com</p>
-    <p>Phone: +1 234 567 890</p>
-    <p>Address: 123 Green Street, Eco City</p>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2025 GreenLeaf Academy | Designed with 💚</p>
   </footer>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <button id="back-to-top" title="Back to top">↑ Top</button>
+
+  <script>
+    // safe helpers
+    function el(id){ return document.getElementById(id); }
+    function qAll(sel){ return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+
+    // set year
+    try { var y = el('year'); if (y) y.textContent = new Date().getFullYear(); } catch(e){}
+
+    // dropdown, filters, search, navigation
+    (function(){
+      var toggle = el('dropdown-toggle');
+      var menu = el('dropdown-menu');
+      var search = el('search');
+      var grid = el('courses-grid');
+      var breadcrumb = el('breadcrumb');
+      var filterBtns = qAll('#filter-buttons [data-filter]');
+
+      function closeMenu(){
+        if (menu) menu.classList.remove('show');
+        if (toggle) { toggle.setAttribute('aria-expanded','false'); }
+        if (menu) menu.setAttribute('aria-hidden','true');
+      }
+      function openMenu(){
+        if (menu) menu.classList.add('show');
+        if (toggle) { toggle.setAttribute('aria-expanded','true'); }
+        if (menu) menu.setAttribute('aria-hidden','false');
+      }
+
+      if (toggle){
+        toggle.addEventListener('click', function(e){
+          e.stopPropagation();
+          if (menu && menu.classList.contains('show')) closeMenu(); else openMenu();
+        });
+      }
+
+      if (menu){
+        menu.addEventListener('click', function(e){
+          var a = e.target;
+          while(a && a.tagName !== 'A') a = a.parentElement;
+          if (!a) return;
+          var filter = a.getAttribute('data-filter');
+          if (filter){
+            e.preventDefault();
+            applyFilter(filter);
+            closeMenu();
+          } else {
+            // allow links with href (contacts, fees) to navigate
+            if (a.getAttribute('href')) closeMenu();
+          }
+        });
+      }
+
+      // filter buttons (header)
+      filterBtns.forEach(function(b){
+        b.addEventListener('click', function(){ applyFilter(b.getAttribute('data-filter')); });
+      });
+
+      // search
+      function applySearch(q){
+        var ql = (q || '').toLowerCase().trim();
+        var cards = qAll('#courses-grid a.card');
+        cards.forEach(function(c){
+          var title = (c.getAttribute('data-title') || (c.querySelector('h3') && c.querySelector('h3').textContent) || '').toLowerCase();
+          var summary = (c.getAttribute('data-summary') || '').toLowerCase();
+          var match = !ql || title.indexOf(ql) !== -1 || summary.indexOf(ql) !== -1;
+          c.style.display = match ? '' : 'none';
+        });
+        if (breadcrumb) breadcrumb.textContent = ql ? 'Search › "'+ql+'"' : 'Home › All Courses';
+      }
+
+      if (search){
+        search.addEventListener('input', function(e){ applySearch(e.target.value); });
+        search.addEventListener('keydown', function(e){ if (e.key === 'Escape'){ e.target.value=''; applySearch(''); } });
+      }
+
+      // apply filter
+      function applyFilter(filter){
+        var cards = qAll('#courses-grid a.card');
+        if (!filter || filter === 'all'){
+          cards.forEach(function(c){ c.style.display = ''; });
+          if (breadcrumb) breadcrumb.textContent = 'Home › All Courses';
+          return;
+        }
+        cards.forEach(function(c){
+          c.style.display = (c.getAttribute('data-duration') === filter) ? '' : 'none';
+        });
+        if (breadcrumb) breadcrumb.textContent = 'Home › ' + filter;
+      }
+
+      // card click nav with check
+      if (grid){
+        grid.addEventListener('click', function(ev){
+          var a = ev.target;
+          while(a && a.tagName !== 'A') a = a.parentElement;
+          if (!a || !a.classList.contains('card')) return;
+          ev.preventDefault();
+          var href = a.getAttribute('href');
+          if (!href) { showToast('Invalid link target', true); return; }
+
+          // if file protocol, just navigate
+          if (location.protocol === 'file:') { window.location.href = href; return; }
+
+          // try fetch to check availability, then navigate
+          fetch(href, { method:'GET', cache:'no-store' }).then(function(resp){
+            if (resp.ok) window.location.href = href;
+            else if (resp.status === 404) showToast('Page not found: ' + href, true);
+            else showToast('Unable to load ' + href + ' (status ' + resp.status + ')', true);
+          }).catch(function(err){
+            console.error(err);
+            showToast('Unable to load ' + href + '. Check filename and Live Server.', true);
+          });
+        }, false);
+      }
+
+      // keyboard shortcuts
+      document.addEventListener('keydown', function(ev){
+        var active = document.activeElement;
+        if ((ev.key === '/' || ev.key === '?') && active !== search){ ev.preventDefault(); if (search) search.focus(); return; }
+        if (ev.key === '1') applyFilter('all');
+        if (ev.key === '2') applyFilter('6 Weeks');
+        if (ev.key === '3') applyFilter('6 Months');
+        if (ev.key.toLowerCase() === 'f') { window.location.href = 'fees.html'; }
+      });
+
+      // close dropdown on outside click or ESC
+      document.addEventListener('click', function(e){
+        if (menu && !menu.contains(e.target) && e.target !== toggle) closeMenu();
+      });
+      document.addEventListener('keydown', function(e){ if (e.key === 'Escape'){ closeMenu(); if (search) search.blur(); } });
+    })();
+
+    // back-to-top
+    (function(){
+      var btn = el('back-to-top');
+      if (!btn) return;
+      window.addEventListener('scroll', function(){
+        btn.style.display = window.scrollY > 300 ? 'block' : 'none';
+      });
+      btn.addEventListener('click', function(){ window.scrollTo({ top:0, behavior:'smooth' }); });
+    })();
+
+    // toast
+    function showToast(message, isError, ms){
+      isError = (isError === undefined) ? true : isError;
+      ms = ms || 3500;
+      try {
+        var t = el('toast');
+        if (!t) return;
+        t.textContent = message;
+        t.style.display = 'block';
+        t.style.background = isError ? '#dc2626' : '#111827';
+        if (t._hideTimer) clearTimeout(t._hideTimer);
+        t._hideTimer = setTimeout(function(){ t.style.display = 'none'; }, ms);
+      } catch(e){ console.error(e); }
+    }
+  </script>
 </body>
 </html>

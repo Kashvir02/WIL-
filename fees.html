@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Calculate Fees - Empowering the Nation</title>
+
+  <script>tailwind = {}; tailwind.config = { theme: { extend: { colors: { primary:'#0b5a2e', secondary:'#E08E40' } } } };</script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    :root{
+      --page-bg: #E4C5B0;
+      --nav-bg: #D36112;
+      --card-bg: #83C186;
+      --btn-bg: #589B92;
+      --btn-text: #ffffff;
+      --text-color: #000000;
+      --card-text: #072014;
+      --muted: #6b7280;
+    }
+
+    /* page-level theme */
+    body {
+      background: var(--page-bg);
+      color: var(--text-color);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    header { background: var(--nav-bg); }
+
+    /* panel that previously used bg-white */
+    .panel {
+      background: var(--page-bg); /* keep main content same as page background per request */
+      color: var(--card-text);
+      border-radius: 12px;
+      padding: 1.25rem;
+      box-shadow: 0 8px 24px rgba(6,95,72,0.06);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    /* result block styling (replaces bg-indigo-50) */
+    #result {
+      background: rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-top: 1rem;
+    }
+
+    /* button theme */
+    #calc {
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      border: none;
+    }
+
+    .lead-muted { color: var(--muted); }
+  </style>
+</head>
+<body class="font-sans">
+  <header class="fixed top-0 left-0 right-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-4">
+      <a href="Index.html" class="text-white font-bold">← Back to Catalog</a>
+      <h1 class="text-white ml-4 font-bold">Calculate Fees</h1>
+    </div>
+  </header>
+
+  <main class="max-w-3xl mx-auto p-6 pt-28">
+    <div class="panel">
+      <h2 class="text-2xl font-bold mb-4">Course Fee Calculator</h2>
+
+      <div class="grid gap-4 md:grid-cols-2">
+        <div>
+          <input id="name" placeholder="Full name" class="w-full p-2 border rounded mb-2"/>
+          <input id="phone" placeholder="Phone number" class="w-full p-2 border rounded mb-2"/>
+          <input id="email" placeholder="Email address" class="w-full p-2 border rounded"/>
+        </div>
+
+        <div class="border rounded p-3">
+          <h3 class="font-semibold mb-2">Select courses</h3>
+
+          <label class="flex items-center justify-between p-2 border-b">
+            <span>First Aid (6 Months)</span>
+            <div class="flex items-center gap-3">
+              <span class="text-sm text-gray-600">R1500</span>
+              <input type="checkbox" data-fee="1500" name="course"/>
+            </div>
+          </label>
+
+          <label class="flex items-center justify-between p-2 border-b">
+            <span>Sewing (6 Months)</span>
+            <div class="flex items-center gap-3">
+              <span class="text-sm text-gray-600">R1500</span>
+              <input type="checkbox" data-fee="1500" name="course"/>
+            </div>
+          </label>
+
+          <label class="flex items-center justify-between p-2 border-b">
+            <span>Landscaping (6 Months)</span>
+            <div class="flex items-center gap-3">
+              <span class="text-sm text-gray-600">R1500</span>
+              <input type="checkbox" data-fee="1500" name="course"/>
+            </div>
+          </label>
+
+          <label class="flex items-center justify-between p-2 border-b">
+            <span>Life Skills (6 Months)</span>
+            <div class="flex items-center gap-3">
+              <span class="text-sm text-gray-600">R1500</span>
+              <input type="checkbox" data-fee="1500" name="course"/>
+            </div>
+          </label>
+
+          <label class="flex items-center justify-between p-2 border-b">
+            <span>Child Minding (6 Weeks)</span>
+            <div class="flex items-center gap-3">
+              <span class="text-sm text-gray-600">R750</span>
+              <input type="checkbox" data-fee="750" name="course"/>
+            </div>
+          </label>
+
+          <label class="flex items-center justify-between p-2 border-b">
+            <span>Cooking (6 Weeks)</span>
+            <div class="flex items-center gap-3">
+              <span class="text-sm text-gray-600">R750</span>
+              <input type="checkbox" data-fee="750" name="course"/>
+            </div>
+          </label>
+
+          <label class="flex items-center justify-between p-2">
+            <span>Garden Maintenance (6 Weeks)</span>
+            <div class="flex items-center gap-3">
+              <span class="text-sm text-gray-600">R750</span>
+              <input type="checkbox" data-fee="750" name="course"/>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <div class="mt-6 text-center">
+        <button id="calc" class="px-6 py-3 rounded-full font-bold">CALCULATE TOTAL QUOTED FEE</button>
+      </div>
+
+      <div id="message" class="mt-4 text-center"></div>
+
+      <div id="result" class="mt-4 hidden">
+        <div class="flex justify-between"><span>Subtotal</span><span id="subtotal">R0.00</span></div>
+        <div class="flex justify-between"><span>Discount</span><span id="discount">R0.00</span></div>
+        <div class="flex justify-between"><span>Before VAT</span><span id="beforeVat">R0.00</span></div>
+        <div class="flex justify-between"><span>VAT (15%)</span><span id="vat">R0.00</span></div>
+        <div class="flex justify-between font-bold text-lg mt-2"><span>Final Total</span><span id="final">R0.00</span></div>
+        <p class="text-xs text-gray-600 mt-2">Discounts: 2 courses = 5%, 3 = 10%, 4+ = 15%.</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function fmt(n){ return Number(n).toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}); }
+
+    document.getElementById('calc').addEventListener('click', function(){
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const checked = Array.from(document.querySelectorAll('input[name="course"]:checked'));
+      const msg = document.getElementById('message');
+      const res = document.getElementById('result');
+
+      msg.textContent = '';
+      res.classList.add('hidden');
+
+      if(!name || !phone || !email){
+        msg.textContent = 'Please fill in name, phone and email.';
+        msg.className = 'text-red-600 mt-2 text-center';
+        return;
+      }
+      if(checked.length === 0){
+        msg.textContent = 'Please select at least one course.';
+        msg.className = 'text-red-600 mt-2 text-center';
+        return;
+      }
+
+      let subtotal = 0;
+      checked.forEach(cb => subtotal += Number(cb.dataset.fee || 0));
+
+      let discount = 0;
+      if(checked.length === 2) discount = 0.05;
+      else if(checked.length === 3) discount = 0.10;
+      else if(checked.length >= 4) discount = 0.15;
+
+      const discountAmt = subtotal * discount;
+      const beforeVat = subtotal - discountAmt;
+      const vat = beforeVat * 0.15;
+      const finalTotal = beforeVat + vat;
+
+      document.getElementById('subtotal').textContent = 'R' + fmt(subtotal);
+      document.getElementById('discount').textContent = '-R' + fmt(discountAmt);
+      document.getElementById('beforeVat').textContent = 'R' + fmt(beforeVat);
+      document.getElementById('vat').textContent = 'R' + fmt(vat);
+      document.getElementById('final').textContent = 'R' + fmt(finalTotal);
+
+      msg.textContent = 'Quoted fee calculated.';
+      msg.className = 'text-green-700 mt-2 text-center';
+      res.classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>

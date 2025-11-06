@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cooking Course - Empowering the Nation</title>
+
+  <!-- fonts (match other pages) -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Blinker:wght@600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind = {};
+    tailwind.config = { theme: { extend: { colors: { primary: '#0b5a2e', secondary: '#E08E40' } } } };
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="js/main.js" defer></script>
+
+  <style>
+    :root{
+      --page-bg: #E4C5B0;
+      --nav-bg: #D36112;
+      --card-bg: #83C186;
+      --card-text: #072014;
+      --btn-bg: #589B92;
+      --btn-text: #ffffff;
+      --text-color: #000000;
+    }
+
+    body{ background:var(--page-bg); color:var(--text-color); font-family:'Blinker',sans-serif; }
+    header{ background:var(--nav-bg); color:#fff; position:fixed; left:0; right:0; top:0; z-index:50; }
+    main{ max-width:64rem; margin:5.5rem auto 2rem; padding:1rem; }
+    .lead-muted { color:#374151; }
+    /* ensure the page-level card container uses unified card look */
+    .course-card { padding:1.25rem; border-radius:12px; }
+    .callout { border-left:4px solid var(--nav-bg); padding:1rem; border-radius:8px; background:rgba(255,255,255,0.06); color:var(--card-text); }
+  </style>
+</head>
+<body>
+  <header class="p-4">
+    <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;">
+      <a href="index.html" style="display:flex;align-items:center;gap:12px;color:#fff;text-decoration:none;">
+        <img src="wilLogo.jpg" alt="logo" style="height:40px;border-radius:6px;" onerror="this.onerror=null;this.src='https://placehold.co/64x64/4D603A/E08E40?text=EN'">
+        <strong>Empowering the Nation</strong>
+      </a>
+      <nav style="display:flex;align-items:center;gap:12px;">
+        <a href="contacts.html" style="color:#fff;text-decoration:none;">Contact</a>
+        <a href="fees.html" style="background:var(--btn-bg);color:var(--btn-text);padding:8px 12px;border-radius:9999px;text-decoration:none;font-weight:700;">Calculate Fees</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <a href="index.html" class="lead-muted font-semibold mb-4 inline-block" style="display:inline-block;margin-bottom:1rem;">← Back to Courses</a>
+
+    <article class="card course-card" tabindex="0">
+      <h1 style="font-family:'Baloo 2',cursive;font-size:1.8rem;margin-bottom:0.5rem;color:var(--card-text);">Cooking</h1>
+      <p class="lead-muted" style="margin:0 0 1rem 0;">6 Weeks — R750</p>
+
+      <section style="margin-bottom:1rem;">
+        <h3 style="font-size:1.125rem;font-weight:700;margin-bottom:0.5rem;color:var(--card-text);">Introduction</h3>
+        <p>Develop the skills to prepare nutritious, tasty meals. The Cooking course teaches culinary fundamentals, meal planning, and food presentation.</p>
+      </section>
+
+      <section style="margin-bottom:1rem;">
+        <h3 style="font-size:1.025rem;font-weight:700;margin-bottom:0.5rem;color:var(--card-text);">Modules (StudyBox, 2025)</h3>
+        <ul class="list-disc ml-6">
+          <li>Kitchen Safety and Hygiene</li>
+          <li>Food Preparation and Cooking Techniques</li>
+          <li>Nutrition and Meal Planning</li>
+          <li>Cooking for Different Dietary Needs</li>
+          <li>Presentation and Service</li>
+        </ul>
+        <figure style="margin-top:1rem;">
+          <img src="https://i.pinimg.com/736x/2a/d0/99/2ad099d8681ae4c1afd2ec91da0ed422.jpg" alt="Cooking" style="width:100%;border-radius:10px;display:block;">
+        </figure>
+      </section>
+
+      <section style="margin-bottom:1rem;">
+        <h3 style="font-size:1.025rem;font-weight:700;margin-bottom:0.5rem;color:var(--card-text);">Career Opportunities</h3>
+        <ul class="list-disc ml-6">
+          <li>Chef or cook</li>
+          <li>Kitchen assistant</li>
+          <li>Catering business owner</li>
+          <li>Restaurant or café staff</li>
+          <li>Private cook</li>
+        </ul>
+      </section>
+
+      <section class="callout" style="margin-top:0.8rem;">
+        <h3 style="margin:0 0 0.5rem 0;font-size:1.125rem;font-weight:700;color:var(--card-text);">Conclusion</h3>
+        <p style="margin:0;">The Cooking course empowers learners to create healthy, flavorful dishes while opening doors to the food service industry and entrepreneurship.</p>
+      </section>
+    </article>
+  </main>
+
+  <footer style="text-align:center;padding:1rem;background:#111827;color:#fff;">
+    &copy; <span id="year"></span> Empowering the Nation. All rights reserved.
+  </footer>
+
+  <script>try{document.getElementById('year').textContent=new Date().getFullYear();}catch(e){};</script>
+</body>
+</html>
